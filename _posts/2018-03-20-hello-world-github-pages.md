@@ -7,7 +7,7 @@ author:     "Nero"
 header-img: "img/post-bg-2015.jpg"
 tags:
     - Github
-    - Blog
+    - 學習筆記
 ---
 
 > “學習如何在Github上建立簡單的個人頁面”

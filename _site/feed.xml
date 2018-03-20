@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nero's Blog</title>
+    <description>Coding for Life; Life for Coding</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 21 Mar 2018 00:19:05 +0800</pubDate>
+    <lastBuildDate>Wed, 21 Mar 2018 00:19:05 +0800</lastBuildDate>
+    <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>Welcome to Nero Blog</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;“學習如何在Github上建立簡單的個人頁面”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;建立repository&quot;&gt;建立Repository&lt;/h2&gt;
+&lt;p&gt;建立一個新的Repository並將它命名為username.github.io，這邊的username必須是Github 帳號的ID，我的帳號是nerocube，所以這個專案需要命名為nerocube.github.io&lt;/p&gt;
+&lt;h2 id=&quot;複製至本機&quot;&gt;複製至本機&lt;/h2&gt;
+&lt;p&gt;將這個專案複製至自己的機器上&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/username/username.github.io
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;hello-world-github-pages&quot;&gt;Hello World, Github Pages&lt;/h2&gt;
+&lt;p&gt;進入專案資料夾並簡單的加入一個含有Hello World的index.html&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd username.github.io
+$ echo &quot;Hello World&quot; &amp;gt; index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;上傳專案&quot;&gt;上傳專案&lt;/h2&gt;
+&lt;p&gt;將修改的專案進行上傳&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add --all
+$ git commit -m &quot;Initial commit&quot;
+$ git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;完成&quot;&gt;完成！！&lt;/h2&gt;
+&lt;p&gt;你可以透過&lt;code class=&quot;highlighter-rouge&quot;&gt; https://username.github.io.&lt;/code&gt;瀏覽你的Github Pages了&lt;/p&gt;
+&lt;h2 id=&quot;參考&quot;&gt;參考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://pages.github.com/&quot;&gt;Github Pages官方文件&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;Markdwn Github官方文件&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 20 Mar 2018 18:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/03/20/hello-world-github-pages/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/03/20/hello-world-github-pages/</guid>
+        
+        <category>Github</category>
+        
+        <category>Blog</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

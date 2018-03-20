@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Welcome to Nero Blog"
-subtitle:   " \"Hello World, Github Pages\""
+title:      "Hello World, Github Pages"
+subtitle:   " \"Build a little blog on Github\""
 date:       2018-03-20 10:00:00
 author:     "Nero"
 header-img: "img/post-bg-2015.jpg"

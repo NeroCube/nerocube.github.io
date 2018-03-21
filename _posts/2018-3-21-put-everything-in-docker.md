@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Put everything in Docker"
+title:      "Put Everything in Docker"
 subtitle:   " \"Into the world of docker container\""
 date:       2018-03-21 10:34:00
 author:     "Nero"

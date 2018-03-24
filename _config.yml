@@ -67,7 +67,7 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Learn programming from life; Learn life from programming， <br>The kernenl of life is conviction inspired by deep thinking"
+sidebar-about-description: "從生活中學習編程 ; 從編程中學習生活， <br>The kernenl of life is conviction inspired by deep thinking"
 sidebar-avatar: /img/avatar-nero.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 

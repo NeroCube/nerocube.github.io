@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Why you need Region and Availability Zone?"
-subtitle:   " \"Everything fails all the time — build for resiliency\""
+subtitle:   "\"Everything fails all the time — build for resiliency\""
 date:       2018-03-23 14:02:00
 author:     "Nero"
 header-img: "img/post-bg-os-metro.jpg"

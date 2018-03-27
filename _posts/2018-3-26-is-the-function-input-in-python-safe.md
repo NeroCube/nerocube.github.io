@@ -101,5 +101,5 @@ status code: 200
 * Python3.x 中 `input()` 函數接受一個標準輸入數據，返回為 `string` 類型。
 * Python2.x 中 `input()` 相等於 `eval(raw_input(prompt))`
 
-所以如果用的是 Python3.x 就沒有什麼問題他預設返回 string 類型，但 Python2.x 建議改為 `raw_input()` 讓他返回為 `string` 類型，除非這是你要的功能 :smirk:。
+所以如果用的是 Python3.x 就沒有什麼問題他預設返回 string 類型，但 Python2.x 建議改為 `raw_input()` 讓他返回為 `string` 類型，除非這是你要的功能  😏。
 

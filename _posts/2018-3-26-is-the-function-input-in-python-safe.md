@@ -48,8 +48,8 @@ $ python backdoor_in_input.py
 please input your cost :hi
 name 'hi' is not defined
 ```
-輸入一個字串做數值的轉型會錯好像也蠻正常的啊，但我們只仔細看錯誤訊息，好像拿裡怪怪的，如果轉型失敗為什麼是 `name 'hi' is not defined`？
-我們稍微修改一下程式成下面這樣，方便讓我們知道是拿種錯誤。
+輸入一個字串做數值的轉型會錯好像也蠻正常的啊，但我們只仔細看錯誤訊息，好像哪裡怪怪的，如果轉型失敗為什麼是 `name 'hi' is not defined`？
+我們稍微修改一下程式成下面這樣，方便讓我們知道是哪種錯誤。
 ```
 config = {'user': 'postgres', 'password': 'cohondob', 'database': 'testdb', 'host': '127.0.0.1', 'port': '5432'}
 

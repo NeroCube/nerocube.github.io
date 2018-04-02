@@ -4,7 +4,7 @@ title:      "Hello World, Redis"
 subtitle:   " \"Accelerate the network access with NoSQL database\""
 date:       2018-04-02 22:54:00
 author:     "Nero"
-header-img: "img/post-bg-redis.jpg"
+header-img: "img/post-bg-data visualization.jpg"
 tags:
     - Redis
     - NoSQL

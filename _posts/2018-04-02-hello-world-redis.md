@@ -7,7 +7,6 @@ author:     "Nero"
 header-img: "img/post-bg-data visualization.jpg"
 tags:
     - Redis
-    - NoSQL
     - Docker
     - 學習筆記
 ---

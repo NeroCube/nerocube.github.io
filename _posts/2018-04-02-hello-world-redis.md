@@ -65,7 +65,31 @@ OK
 $ redis:6379> GET mykey
 "Hello"
 ```
+## Redis Benchmark
+透過以下指令同時執行 10000 個請求，了解執行效能。
 
+```
+$ docker run -it --link redis:redis --rm redis sh -c 'exec redis-benchmark -h redis -p 6379  -n 10000 -q'
+
+PING_INLINE: 42194.09 requests per second
+PING_BULK: 42194.09 requests per second
+SET: 41666.67 requests per second
+GET: 42372.88 requests per second
+INCR: 41666.67 requests per second
+LPUSH: 40160.64 requests per second
+RPUSH: 41841.00 requests per second
+LPOP: 41493.78 requests per second
+RPOP: 41841.00 requests per second
+SADD: 40983.61 requests per second
+HSET: 40816.32 requests per second
+SPOP: 41322.31 requests per second
+LPUSH (needed to benchmark LRANGE): 40485.83 requests per second
+LRANGE_100 (first 100 elements): 30303.03 requests per second
+LRANGE_300 (first 300 elements): 15847.86 requests per second
+LRANGE_500 (first 450 elements): 12706.48 requests per second
+LRANGE_600 (first 600 elements): 10504.20 requests per second
+MSET (10 keys): 38910.51 requests per second
+```
 ## 參考資料
 
 [Redis AWS](https://aws.amazon.com/tw/redis/)

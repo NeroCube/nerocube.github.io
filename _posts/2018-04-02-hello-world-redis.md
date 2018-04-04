@@ -8,6 +8,7 @@ header-img: "img/post-bg-data visualization.jpg"
 tags:
     - Redis
     - NoSQL
+    - Docker
     - 學習筆記
 ---
 > “初步認識什麼是 Redis”

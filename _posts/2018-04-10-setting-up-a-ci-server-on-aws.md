@@ -13,3 +13,9 @@ tags:
 ---
 
 > “學習如何在 AWS 上建立一個 Drone CI Server 並連結 Github 進行自動化測試”
+
+## 建立 AWS server
+
+## 安裝 docker
+
+## 註冊 Github application

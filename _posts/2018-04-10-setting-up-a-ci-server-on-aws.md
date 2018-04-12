@@ -116,7 +116,7 @@ $ docker-compose up
 接著就可以透過瀏覽器輸入`http://[public-ip-of-ec2-instance]:8000` ，便可以在瀏覽器上看到你的 CI 服務了。
 
 ![Testing on Drone](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-04-10-setting-up-a-ci-server-on-aws/Screen%20Shot%202018-04-12%20at%2010.52.56%20PM.png)
-接著每次 commit 便可以透過 CI Server 作到自動化測試。
+每次 commit 到 Github 上 CI Server 便會自動化做測試。
 
 ## 參考資料
 [drone-tutorial](https://github.com/go-training/drone-tutorial)

@@ -8,6 +8,7 @@ header-img: "img/post-bg-os-metro.jpg"
 tags:
     - AWS
     - Drone
+    - Docker
     - CI
     - 學習筆記
 ---
@@ -110,7 +111,7 @@ services:
 $ docker-compose up
 ```
 接著就可以透過瀏覽器輸入`http://[public-ip-of-ec2-instance]:8000` ，便可以在瀏覽器上看到你的 CI 服務了。
-接著每次 commit 便可以透過 CI Server 作到自動化測試了。
+接著每次 commit 便可以透過 CI Server 作到自動化測試。
 
 ## 參考資料
 [drone-tutorial](https://github.com/go-training/drone-tutorial)

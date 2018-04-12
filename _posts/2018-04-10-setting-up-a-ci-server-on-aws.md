@@ -4,7 +4,7 @@ title:      "Setting up a Drone CI server on AWS EC2"
 subtitle:   " \"Make testing, deploy and everything automatic\""
 date:       2018-04-10 21:15:01
 author:     "Nero"
-header-img: "img/post-bg-docker.jpg"
+header-img: "img/post-bg-container.png"
 tags:
     - AWS
     - Drone

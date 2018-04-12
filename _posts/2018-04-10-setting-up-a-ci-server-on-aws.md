@@ -19,3 +19,8 @@ tags:
 ## 安裝 docker
 
 ## 註冊 Github application
+
+## 參考資料
+[drone-tutorial](https://github.com/go-training/drone-tutorial)
+[drone-on-docker-compose](https://github.com/appleboy/drone-on-docker-compose/blob/master/docker-compose.yml)
+[amazon-ec2-user-guide](https://github.com/awsdocs/amazon-ec2-user-guide/blob/master/doc_source/concepts.md)

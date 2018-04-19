@@ -33,8 +33,15 @@ Docker是一套使用Google推出的Go語言實作的一項技術，在Linux內�
 ### 部署更加容易
 Docker 可以運行在許多平台 Mac、Linux 甚至 Windows，透過簡單的指令便能快速地將服務部署到機器上，且不用擔心運行環境變化導致無法正常運行。
 
-## Hello World - Docker
-以下為一個 nodejs 的 Dockerfile範例
+## 前置作業
+在開始前你必須在自己的自己的機器上安裝[Docker](https://docs.docker.com/docker-for-mac/install/#where-to-go-next)
+
+## Dockerfile
+在你的專案目錄底下執行以下指令，創建 Dockerfile。
+```
+$ touch Dockerfile
+```
+並在 Dockerfile 中編寫以下內容，以下為一個 nodejs 的 Dockerfile範例。
 ```
 FROM google/nodejs
 
@@ -48,9 +55,20 @@ ENTRYPOINT ["/nodejs/bin/npm", "start"]
 ```
 - FROM: 指定 base image
 - WORKDIR: 指定 docker 執行起來時候的預設目錄位置
-- EXPOSE: 指定所有發布的 port
+- EXPOSE: 指定 image運作在 Docker 中的哪一個 port
 - CMD: 指定 image 啟動後所要執行的指令
 - ENTRYPOINT: 指令 image 啟動後，程式的進入點
+
+## 建立並啟動
+在 Dockerfile 所在的目錄底下，透過以下指令將你撰寫好的 Dockerfile 編譯成 image ，指令中的`-t`為設定 image 的 tag ，在 tag 欄位可以輸入你希望設定的 image tag。
+```
+docker build -t {image tag}
+```
+有了編譯好的 image 檔後我們只要輸入以下指令，便可以將 Docker 的服務跑起來，設定`-p`可以將在 Docker 中的 port 映射到主機上的 port。
+```
+docker run -p {localhost port}:{docker port} {image tag}
+```
+
 ## 參考資料
 
 [Docker學習筆記](https://peihsinsu.gitbooks.io/docker-note-book/content/)

@@ -22,7 +22,10 @@ AWS Lambda 是 Amazon 提供的一種 Serverless Service，這項服務不是真
 
 ## AWS Cloud Architecture
 
-![AWS Cloud Architecture](https://github.com/NeroCube/nerocube.github.io/blob/master/img/in-post/2018-06-22-aws-lambda-function/AWS-lambda-reduce-load.png)
+<p align="center">
+  <img width="100%" height="100%" src="https://github.com/NeroCube/nerocube.github.io/blob/master/img/in-post/2018-06-22-aws-lambda-function/AWS-lambda-reduce-load.png">
+</p>
+
 上圖為 lambda-reduce-load 的架構，建立步驟如下。
 
 ## 建立 AWS Lambda

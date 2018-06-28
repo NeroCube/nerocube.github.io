@@ -11,16 +11,16 @@ tags:
     - 學習筆記
 ---
 
-> “學習如何在 Docker 中使用 Nginx load balance”
+> “學習如何在 Docker 中使用 Nginx 的 load balance”
 
 ## 什麼是 Load Balance ?
 [負載平衡](https://zh.wikipedia.org/wiki/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1)（Load balancing）是一種用來在多個電腦（電腦集群）、網路連線、CPU、磁碟驅動器或其他資源中分配負載的技術。
-在 [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/) 中提供了以下幾中的負載平衡規則。
+在 [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/) 中提供了以下幾種的負載平衡規則。
 
 - Round Robin: 將請求平均分佈於部署的伺服器上，這個方法為預設方法。
 - Least Connections: 將請求發送到活動連接數最少的伺服器。
-- IP Hash: 發送請求的伺服器根據客戶端IP地址決定。在這種情況下，使用 IPv4 地址的前三個八位位組或全部 IPv6 地址來計算雜湊值。該方法保證來自同一地址的請求到達同一個伺服器，直到它不可用。
-- Generic Hash: 請求發送到的服務器由用戶定義的 key 確定，key 可以是 text string，variable 或 combination。例如，key 可能配對的來源IP地址和端口，讓同一接口的請求對到同一伺服器。
+- IP Hash: 發送請求的伺服器根據客戶端IP地址決定。在這種情況下，使用 IPv4 地址的前三個八位位組或全部 IPv6 地址來計算雜湊值。該方法保證來自同一地址的請求到達同一個伺服器，直到它不可用為止。
+- Generic Hash: 請求發送到的伺服器由用戶定義的 key 確定，key 可以是 text string，variable 或 combination。例如，key 可以配對來源IP地址和端口，讓同一接口的請求對到同一伺服器。
 
 ## 為什麼需要 Load Balance ?
 透過 Load balancing 可以達到以下的目的。
@@ -34,7 +34,7 @@ tags:
 ## Architecture
 
 ## Load Balancing Settings
-這邊 Load-Balance 的設置如下。
+這邊 Load Balance 的設置如下。
 - weight: NGINX 分配請求的權重比例。
 - max_fails: 設置 NGINX 將伺服器標記為不可用的連續失敗嘗試次數。
 - fail_timeout: 當該機器達到 `max_fails` 時，NGINX 認為該機器不可用的時間。

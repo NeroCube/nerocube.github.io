@@ -92,6 +92,28 @@ load-balance_1  | 172.22.0.1 - - [28/Jun/2018:03:54:59 +0000] "GET / HTTP/1.1" 2
 ```
 
 ## Benchmark
- 
+Upstream with 3 server 
+```
+$ echo "GET http://localhost:8888" | vegeta attack -rate=100 -connections=1 -duration=1s | tee results.bin | vegeta report
+
+Requests      [total, rate]            100, 101.01
+Duration      [total, attack, wait]    993.69113ms, 989.999ms, 3.69213ms
+Latencies     [mean, 50, 95, 99, max]  2.428016ms, 2.371484ms, 3.163846ms, 6.979051ms, 7.686791ms
+Bytes In      [total, mean]            2600, 26.00
+Bytes Out     [total, mean]            0, 0.00
+Success       [ratio]                  100.00%
+Status Codes  [code:count]             200:100
+```
+Upstream with 1 server 
+```
+echo "GET http://localhost:8888" | vegeta attack -rate=100 -connections=1 -duration=1s | tee results.bin | vegeta report
+Requests      [total, rate]            100, 101.01
+Duration      [total, attack, wait]    992.414335ms, 989.999ms, 2.415335ms
+Latencies     [mean, 50, 95, 99, max]  2.159423ms, 2.092387ms, 3.045662ms, 3.590794ms, 3.69478ms
+Bytes In      [total, mean]            2600, 26.00
+Bytes Out     [total, mean]            0, 0.00
+Success       [ratio]                  100.00%
+Status Codes  [code:count]             200:100
+ ```
 ## 完整程式碼
 [docker-nginx-load-balancing](https://github.com/NeroCube/docker-nginx-load-balancing)

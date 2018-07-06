@@ -4,7 +4,7 @@ title:      "Use Nginx as load balancing in Docker."
 subtitle:   " \"Reduce the backend loading with Nginx load balance.\""
 date:       2018-06-28 14:00:00
 author:     "Nero"
-header-img: "img/post-bg-os-metro.jpg"
+header-img: "img/post-bg-container.jpg"
 tags:
     - Docker
     - Nginx

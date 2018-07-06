@@ -33,7 +33,7 @@ tags:
 
 ## Architecture
 <p align="center">
-  <img width="100%" height="100%" src="https://www.booleanworld.com/wp-content/uploads/2017/08/LoadBalancing.png">
+  <img width="100%" height="100%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-06-28-docker-nginx-load-balancing/nginx-load-balancing.jpg">
 </p>
 
 ## Load Balancing Settings

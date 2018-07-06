@@ -32,6 +32,9 @@ tags:
 - 提高可靠性
 
 ## Architecture
+<p align="center">
+  <img width="100%" height="100%" src="https://www.booleanworld.com/wp-content/uploads/2017/08/LoadBalancing.png">
+</p>
 
 ## Load Balancing Settings
 這邊 Load Balance 的設置如下。

@@ -23,8 +23,8 @@ description: ""
     </p>
     <div class="tags">
         {% for tag in post.tags %}
-        <a href="/tags/#{tag}" title="{tag}" rel="5">
-            {tag}
+        <a href="/tags/#{{tag}}" title="{{tag}}">
+            {{ tag }}
         </a>
         {% endfor %}
     </div>

@@ -21,6 +21,13 @@ description: ""
     <p class="post-meta">
         Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
     </p>
+    <div class="tags">
+        {% for tag in post.tags %}
+        <a href="/tags/#{tag}" title="{tag}" rel="5">
+            {tag}
+        </a>
+        {% endfor %}
+    </div>
 </div>
 <hr>
 {% endfor %}

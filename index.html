@@ -2,6 +2,35 @@
 layout: page
 description: ""
 ---
+<!-- Custom CSS -->
+<style type="text/css">
+  .tags {
+    margin-bottom: -5px;
+  }
+  .tags a,
+  .tags .tag {
+    display: inline-block;
+    border: 1px solid #FFB309;
+    border-radius: 999em;
+    padding: 0 10px;
+    color: #FFB309;
+    line-height: 24px;
+    font-size: 12px;
+    text-decoration: none;
+    margin: 0 1px;
+    margin-bottom: 6px;
+  }
+  .tags a:hover,
+  .tags .tag:hover,
+  .tags a:active,
+  .tags .tag:active {
+    color: #0085a1;
+    border-color: #0085a1;
+    background-color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+  }
+</style>
+
 
 {% for post in paginator.posts %}
 <div class="post-preview">

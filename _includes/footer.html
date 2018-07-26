@@ -136,6 +136,14 @@
     <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
 -->
 
+<!-- Highlight.js -->
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
 
 <!-- jquery.tagcloud.js -->
 <script>
@@ -161,7 +169,7 @@
 
 
 <!-- Google Analytics -->
-{% if site.ga_track_id %}
+<!-- {% if site.ga_track_id %}
 <script>
     // dynamic User by Hux
     var _gaId = '{{ site.ga_track_id }}';
@@ -176,11 +184,11 @@
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
 </script>
-{% endif %}
+{% endif %} -->
 
 
 <!-- Baidu Tongji -->
-{% if site.ba_track_id %}
+<!-- {% if site.ba_track_id %}
 <script>
     // dynamic User by Hux
     var _baId = '{{ site.ba_track_id }}';
@@ -194,8 +202,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
 </script>
-{% endif %}
-
+{% endif %} -->
 
 <!-- Side Catalog -->
 {% if page.catalog %}

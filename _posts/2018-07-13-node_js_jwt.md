@@ -1,18 +1,18 @@
 ---
 layout:     post
 title:      "JWT - A new user authentication mechanism"
-subtitle:   " \"Implement JWT auth server with Node.js in Docker.\""
+subtitle:   " \"Introduction to the JSON Web Token mechanism and usage scenarios.\""
 date:       2018-07-15 12:00:00
 author:     "Nero"
-toc: <li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="##什麼是-jwt-"><span class="toc-nav-number">1.</span><span class="toc-nav-text">什麼是JWT?</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#header"><span class="toc-nav-number">1.1.</span><span class="toc-nav-text">Header</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#claimspayload"><span class="toc-nav-number">1.2.</span><span class="toc-nav-text">Claims(Payload)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#signature"><span class="toc-nav-number">1.3.</span><span class="toc-nav-text">Signature</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#與傳統-session-有什麼不同"><span class="toc-nav-number">2.</span><span class="toc-nav-text">與傳統Session有什麼不同</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#使用-jwt-的好處"><span class="toc-nav-number">3.</span><span class="toc-nav-text">使用JWT的好處</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#跨服務認證"><span class="toc-nav-number">3.1.</span><span class="toc-nav-text">跨服務認證</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#提升安全性"><span class="toc-nav-number">3.2.</span><span class="toc-nav-text">提升安全性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#降低資料庫負載"><span class="toc-nav-number">3.3.</span><span class="toc-nav-text">降低資料庫負載</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#適合的使用時機"><span class="toc-nav-number">4.</span><span class="toc-nav-text">適合的使用時機</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#認證流程"><span class="toc-nav-number">5.</span><span class="toc-nav-text">認證流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#參考"><span class="toc-nav-number">6.</span><span class="toc-nav-text">參考</span></a></li>
+toc: <li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#什麼是-jwt-"><span class="toc-nav-number">1.</span><span class="toc-nav-text">什麼是JWT?</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#header"><span class="toc-nav-number">1.1.</span><span class="toc-nav-text">Header</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#claimspayload"><span class="toc-nav-number">1.2.</span><span class="toc-nav-text">Claims(Payload)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#signature"><span class="toc-nav-number">1.3.</span><span class="toc-nav-text">Signature</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#與傳統-session-有什麼不同"><span class="toc-nav-number">2.</span><span class="toc-nav-text">與傳統Session有什麼不同</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#使用-jwt-的好處"><span class="toc-nav-number">3.</span><span class="toc-nav-text">使用JWT的好處</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#跨服務認證"><span class="toc-nav-number">3.1.</span><span class="toc-nav-text">跨服務認證</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#提升安全性"><span class="toc-nav-number">3.2.</span><span class="toc-nav-text">提升安全性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#降低資料庫負載"><span class="toc-nav-number">3.3.</span><span class="toc-nav-text">降低資料庫負載</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#適合的使用時機"><span class="toc-nav-number">4.</span><span class="toc-nav-text">適合的使用時機</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#認證流程"><span class="toc-nav-number">5.</span><span class="toc-nav-text">認證流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#參考"><span class="toc-nav-number">6.</span><span class="toc-nav-text">參考</span></a></li>
 header-img: "img/post-bg-js-version.jpg"
 tags:
-    - Node.js
-    - Docker
+    - Auth
     - JWT
+    - 學習筆記
 ---
 
-> “使用 Node.js 在 Docker 實作 JWT Auth Server”
+> “簡介JSON Web Token 機制與使用情境”
 
 ## 什麼是 JWT ?
 
@@ -79,7 +79,7 @@ signature = hmacsha256.hash(content)
 傳統使用 Session 在 Server 端需要將用來識別使用者的 Token 紀錄在快取或資料庫中，如下圖，每次 request 進來經過 Load Balance 進到不同的 Backend Server，會造成在 Server1 可以識別，而 Server2 沒有用戶的 Session 所以無法識別出是誰的請求，可以透過一個共用的快取(Radis)或資料庫解決這個問題，但在這樣的分散式系統中這會造成維護與架構上的複雜度提高。
 
 <p align="center">
-  <img width="100%" height="100%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-07-13-node_js_jwt/session-work-in-load-balance.png">
+  <img width="100%" height="100%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-07-13-node_js_jwt/session-load-balance-flow.png">
 </p>
 
 
@@ -99,7 +99,7 @@ JWT 本身為`無狀態性的`（Stateless），當 Backend Server 收到 Token 
 
 ## 認證流程
 <p align="center">
-  <img width="100%" height="100%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-07-13-node_js_jwt/client-credentials-grant.png">
+  <img width="100%" height="100%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-07-13-node_js_jwt/client-credentials-grant-flow.png">
 </p>
 
 1. client端發送登入的請求，這時可能會附上帳號密碼等驗證資訊，server端驗證登入資訊後，搭配一個密鑰(secret key)來產生JWT token

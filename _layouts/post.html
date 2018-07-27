@@ -106,29 +106,14 @@ layout: default
                 {% endif %}
             </div>  
 
-    <!-- Side Catalog Container -->
-        {% if true %}
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <hr class="hidden-sm hidden-xs">
-                    <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
-                    </h5>
-                    <ul class="catalog-body"></ul>
-                </div>
-            </div>
-        {% endif %}
-
     <!-- Table of Contents -->
-        {% if page.toc != "" %}
+        {% if page.toc %}
         <aside id="sidebar">
             <div id="toc" class="toc-article">
                 <strong class="toc-title">Contents</strong>
-                {{page.toc}}
+                <ol class="toc-nav">
+                        {{page.toc}}
+                </ol>
             </div>
         </aside>
         {% endif %}

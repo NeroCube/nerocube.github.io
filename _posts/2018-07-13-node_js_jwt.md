@@ -4,40 +4,29 @@ title:      "JWT - A new user authentication mechanism"
 subtitle:   " \"Implement JWT auth server with Node.js in Docker.\""
 date:       2018-07-15 12:00:00
 author:     "Nero"
-toc: 
-    1. [什麼是 JWT ?](https://nerocube.github.io/2018/07/15/node_js_jwt/#什麼是-jwt-)
-        1. [Header](https://nerocube.github.io/2018/07/15/node_js_jwt/#header)
-        2. [Claims(Payload)](https://nerocube.github.io/2018/07/15/node_js_jwt/#claimspayload)
-        3. [Signature](https://nerocube.github.io/2018/07/15/node_js_jwt/#signature)
-    2. [與傳統 Session 有什麼不同](https://nerocube.github.io/2018/07/15/node_js_jwt/#與傳統-session-有什麼不同)
-    3. [使用 JWT 的好處](https://nerocube.github.io/2018/07/15/node_js_jwt/#使用-jwt-的好處)
-    4. [適合的使用時機](https://nerocube.github.io/2018/07/15/node_js_jwt/#適合的使用時機)
-    5. [認證流程](https://nerocube.github.io/2018/07/15/node_js_jwt/#認證流程)
-    6. [參考](https://nerocube.github.io/2018/07/15/node_js_jwt/#參考)
+toc: <li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="##什麼是-jwt-"><span class="toc-nav-number">1.</span><span class="toc-nav-text">什麼是JWT?</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#header"><span class="toc-nav-number">1.1.</span><span class="toc-nav-text">Header</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#claimspayload"><span class="toc-nav-number">1.2.</span><span class="toc-nav-text">Claims(Payload)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"href="#signature"><span class="toc-nav-number">1.3.</span><span class="toc-nav-text">Signature</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#與傳統-session-有什麼不同"><span class="toc-nav-number">2.</span><span class="toc-nav-text">與傳統Session有什麼不同</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#使用-jwt-的好處"><span class="toc-nav-number">3.</span><span class="toc-nav-text">使用JWT的好處</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#適合的使用時機"><span class="toc-nav-number">4.</span><span class="toc-nav-text">適合的使用時機</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#認證流程"><span class="toc-nav-number">5.</span><span class="toc-nav-text">認證流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"href="#參考"><span class="toc-nav-number">6.</span><span class="toc-nav-text">參考</span></a></li>
 header-img: "img/post-bg-js-version.jpg"
 tags:
     - Node.js
     - Docker
     - JWT
 ---
-<!--ts-->
 
-<!--te-->
 > “使用 Node.js 在 Docker 實作 JWT Auth Server”
 
 ## 什麼是 JWT ?
 
 [JSON Web Token (JWT)](https://jwt.io/) 是 [Auth0](https://auth0.com/?utm_source=jwtio&utm_campaign=craftedby) 提構出的一個新 Token 想法，一個 JWT 的長相會像下面這樣。
-```
+```bash
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 ```
 他的構成如下。
-```
+```bash
 Header.Payload.Signature
 ```
 ### Header
 標頭包含了 `alg` 簽章或加密演算法與 `typ` Token 的類型。
-```
+```json
 {
   "alg": "HS256",
   "typ": "JWT"
@@ -68,7 +57,7 @@ Claims部分包含了一些跟這個令有關的重要信息.JWT標準規定了�
 * `jti`：JWT ID。針對當前 Token 的唯一標識
 
 Payload 格式如下。
-```
+```json
 {
     "iss": "John Wu JWT",
     "iat": 1441593502,
@@ -81,7 +70,8 @@ Payload 格式如下。
 ```
 ### Signature
 簽章的部分為將 Header 與 Claims 透過 Base64 轉換，再依據在 Header 中的演算類型加密，所使用的`secret`只有簽章的 Server 知道所以攻擊者無法偽造內容除非暴力解，因為是以 Base64 轉換的所以不適合把重要資訊放在當中。
-```
+
+```javascript
 content = base64url_encode(Header) + '.' + base64url_encode(Claims)
 signature = hmacsha256.hash(content)
 ```

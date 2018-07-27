@@ -1,4 +1,3 @@
-alert("hjghgjgh")
 var toc = document.getElementById('toc')
 
 if (toc != null) {

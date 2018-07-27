@@ -107,7 +107,7 @@ layout: default
             </div>  
 
     <!-- Side Catalog Container -->
-        {% if page.catalog %}
+        {% if true %}
             <div class="
                 col-lg-2 col-lg-offset-0
                 visible-lg-block
@@ -123,6 +123,16 @@ layout: default
             </div>
         {% endif %}
 
+    <!-- Table of Contents -->
+        {% if page.toc != "" %}
+        <aside id="sidebar">
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Contents</strong>
+                {{page.toc}}
+            </div>
+        </aside>
+        {% endif %}
+    
     <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -220,6 +230,8 @@ layout: default
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
 </script>
+<!-- toc.js -->
+<script type="text/javascript" src="/js/toc.js" async=""></script>
 <style>
     /* place left on bigger screen */
     @media all and (min-width: 800px) {

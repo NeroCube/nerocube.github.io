@@ -44,6 +44,8 @@ gems: [jekyll-paginate]
 markdown: kramdown
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
+  parse_block_html: true                # allow kramdown to parse inside html blocks
+  toc_levels: 1..6
 
 
 

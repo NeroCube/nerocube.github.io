@@ -50,11 +50,17 @@ Data Visualization 資料視覺化是以視覺方式呈現數據的一種表示�
 ## 什麼是 Tableau ?
 {:toc}
 
+人人都是資料分析師，Tableau 是一套將 Data Visualization 的視覺化工具，用戶只需要專注在如何呈現想要說明的故事上，工具有使用過 Excel 的話十分的容易上手，可以拖拉的方式完成 Dashboard ，並有多種視圖包括條型圖、區域圖、、區域圖、餅圖、、區域圖、餅圖、散點圖等，可以選擇。
+
 ## 如何安裝 Tableau ?
 {:toc}
 
+可以在[官方網站](https://www.tableau.com/products/desktop/download)下載，或點擊[連結](https://www.tableau.com/downloads/desktop/mac)進行下載。
+
 ## 小試身手
 {:toc}
+
+
 
 ## 參考資料
 {:toc}

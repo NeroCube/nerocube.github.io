@@ -57,8 +57,12 @@ Data Visualization 資料視覺化是以視覺方式呈現數據的一種表示�
 
 可以在[官方網站](https://www.tableau.com/products/desktop/download)下載，或點擊[連結](https://www.tableau.com/downloads/desktop/mac)進行下載。
 
-## 小試身手
+## 資料分析流程
 {:toc}
+
+<p align="center">
+  <img width="100%" height="100%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post//2018-08-11-hello-world-tableau/data_analysis_process.jpeg">
+</p>
 
 
 
@@ -68,3 +72,5 @@ Data Visualization 資料視覺化是以視覺方式呈現數據的一種表示�
 * [資料視覺化Data Visualization：圖表設計](https://medium.com/uxeastmeetswest/%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96data-visualization-%E5%9C%96%E8%A1%A8%E8%A8%AD%E8%A8%88-9ef17943a2d4)
 
 * [The Top 7 Data Visualization Tools for 2018](https://www.business.com/articles/top-seven-data-visualization-tools-2018/)
+
+* [I ranked every Intro to Data Science course on the internet, based on thousands of data points](https://medium.freecodecamp.org/i-ranked-all-the-best-data-science-intro-courses-based-on-thousands-of-data-points-db5dc7e3eb8e)

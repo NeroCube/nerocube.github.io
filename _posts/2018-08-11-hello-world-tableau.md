@@ -64,28 +64,34 @@ Data Visualization 資料視覺化是以視覺方式呈現數據的一種表示�
   <img width="100%" height="100%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post//2018-08-11-hello-world-tableau/data_analysis_process.jpeg">
 </p>
 
+1. 暸解你分析的目的是什麼？你希望別人從你給出的分析可以做出怎樣的決策或你能讓別人做出怎樣的決策？
+2. 如何取得資料？資料格式是什麼？資料是否足夠讓人做出決策？
+3. 探索資料從中找出適合解釋問題的特徵
+4. 依照適合的情境與流程建立 model。
+5. 將資料以適合的呈現方式 Visualization ，可以參考[這個網站](https://www.data-to-viz.com/)的決策規則。
+
 ## Tableau 操作
 {:toc}
 
-### Dimensions(維度)
+#### Dimensions(維度)
 當連接數據時，Tableau 會將離散類型的屬性(例如：型別是字串或布林)分配到 Dimensions 中，當你從 Dimensions 中拖出一個屬性放入到一個視圖中時，Tableau 都會將它默認為是離散型的，同時為其分配一個藍色的背景。
 
-### Ｍeasures(度量)
+#### Ｍeasures(度量)
 任何從 Measures 上拖到視圖中的屬性默認都會是連續的，它的背景色也將會是綠色。但是如果你點擊字段並選擇 Discrete ，這些相應的值就會變成表格上方的標題。
 
-### Discrete(離散) 
+#### Discrete(離散) 
 而離散的概念在於不可分割，像是骰子跟教室裡面的學生，在定義上不會出現半點或半個學生，在 Tableau 終會以藍色進行表示。
 
-### Continus（連續) 
+#### Continus（連續) 
 連續指一個不間段的範圍，在 Tableau 中會以綠色進行表示。
 
-### Columns(直列)
+#### Columns(直列)
 在工作表中橫向，即 X 軸中希望表達表達的表格屬性。
 
-### Row(橫行)
+#### Row(橫行)
 在工作表中直向，即 Ｙ 軸中希望表達表達的表格屬性。
 
-### Marks(標記)
+#### Marks(標記)
 有多個屬性可以添加，如下。
 - Color
 - Size

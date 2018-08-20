@@ -64,7 +64,34 @@ Data Visualization 資料視覺化是以視覺方式呈現數據的一種表示�
   <img width="100%" height="100%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post//2018-08-11-hello-world-tableau/data_analysis_process.jpeg">
 </p>
 
+## Tableau 操作
+{:toc}
 
+### Dimensions(維度)
+當連接數據時，Tableau 會將離散類型的屬性(例如：型別是字串或布林)分配到 Dimensions 中，當你從 Dimensions 中拖出一個屬性放入到一個視圖中時，Tableau 都會將它默認為是離散型的，同時為其分配一個藍色的背景。
+
+### Ｍeasures(度量)
+任何從 Measures 上拖到視圖中的屬性默認都會是連續的，它的背景色也將會是綠色。但是如果你點擊字段並選擇 Discrete ，這些相應的值就會變成表格上方的標題。
+
+### Discrete(離散) 
+而離散的概念在於不可分割，像是骰子跟教室裡面的學生，在定義上不會出現半點或半個學生，在 Tableau 終會以藍色進行表示。
+
+### Continus（連續) 
+連續指一個不間段的範圍，在 Tableau 中會以綠色進行表示。
+
+### Columns(直列)
+在工作表中橫向，即 X 軸中希望表達表達的表格屬性。
+
+### Row(橫行)
+在工作表中直向，即 Ｙ 軸中希望表達表達的表格屬性。
+
+### Marks(標記)
+有多個屬性可以添加，如下。
+- Color
+- Size
+- Label
+- Detail
+- Tooltip
 
 ## 參考資料
 {:toc}

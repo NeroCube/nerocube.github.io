@@ -5,7 +5,7 @@ subtitle:   " \"The new stage of artificial intelligence\""
 date:       2018-11-16 22:17:00
 author:     "Nero"
 toc:        true
-header-img: "img/post-bg-unix-linux.jpg"
+header-img: "img/post-bg-ml.jpg"
 tags:
     - 學習筆記
     - 機器學習
@@ -19,10 +19,10 @@ tags:
 近年來最火紅的技術莫過於人工智慧 (AI) ，但常常又會聽到機器學習 (ML) 或深度學習 (DL) ，而三者之間的關係可以有下圖看到。
 
 <p align="center">
-  <img width="70%" height="70%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-11-16-hello-world-ml/deep_learning_icons.png">
+  <img width="90%" height="90%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-11-16-hello-world-ml/deep_learning_icons.png">
 </p>
 
-###人工智慧 (AI)
+### 人工智慧 (AI)
 {:toc}
 
 在 1956 年最早出現的也是涵蓋最廣的人工智慧 (AI) ，人們的想像是：「讓機器展現人類的智慧。」使它成為電腦能執行人類工作的廣義術語，而人工智慧的範圍眾說紛紜，隨著時間推衍產生更多的應用和變化。

@@ -89,6 +89,14 @@ if torch.cuda.is_available():
 ```
 ## Variable
 {:toc}
+Variable 是 PyTorch 中一個重要的概念，Variable 本質上與 Tansor 沒有區別用以保存數據，差別在於 Variable 用以保存神經網路訓練期間變化的值，即我們網路可學習得參數，而 Tensor 不儲存訓練過程中學習的值。
+<p align="center">
+  <img width="90%" height="90%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2018-11-19-hello-world-pytorch/variable.png">
+</p>
+Variable 類別包含了 Tensor ，具有下列屬性。
+- data: 可透過 Variable.data 屬性來訪問張量。
+- grad: 可透過 Variable.grad 屬性來訪問反向傳播梯度。
+- grad_fn: 該參數紀錄著得到著個 Variable 的操作，例如是透過加減或乘除。
 
 ## Dataset
 {:toc}

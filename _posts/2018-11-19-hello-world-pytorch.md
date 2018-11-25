@@ -98,6 +98,8 @@ Variable 類別包含了 Tensor ，具有下列屬性。
 - grad: 可透過 Variable.grad 屬性來訪問反向傳播梯度。
 - grad_fn: 該參數紀錄著得到著個 Variable 的操作，例如是透過加減或乘除。
 
+在真實世界中我們可以將任何問題轉換為一個 function of x 即 𝑓(𝑥)，機器學習則是希望盡量減少這個 function 與真實世界的差距，在網路訓練的過程中 input 經過 `forward()` 最後輸出 output ，可透過設定`requires_grad=True`在 value 經過 `forward()` 時告知`backward()`在發生反向傳播梯度(backpropagation)時便會自動計算 gradient 達到 Autograd 的效果。
+
 ## Dataset
 {:toc}
 
@@ -109,3 +111,5 @@ Variable 類別包含了 Tensor ，具有下列屬性。
 
 ## 參考資料
 {:toc}
+
+- [Getting Started with PyTorch Part 1: Understanding how Automatic Differentiation works](https://towardsdatascience.com/getting-started-with-pytorch-part-1-understanding-how-automatic-differentiation-works-5008282073ec)

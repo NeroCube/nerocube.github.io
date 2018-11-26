@@ -100,16 +100,42 @@ Variable 類別包含了 Tensor ，具有下列屬性。
 
 在真實世界中我們可以將任何問題轉換為一個 function of x 即 𝑓(𝑥)，機器學習則是希望盡量減少這個 function 與真實世界的差距，在網路訓練的過程中 input 經過 `forward()` 最後輸出 output ，可透過設定`requires_grad=True`在 value 經過 `forward()` 時告知`backward()`在發生反向傳播梯度(backpropagation)時便會自動計算 gradient 達到 Autograd 的效果。
 
-## Dataset
-{:toc}
-
 ## Module
 {:toc}
+在 PyTorch 中所有的神經網路都是基於 `torch.nn.Module` ，且 Module 可以以樹狀結構巢狀包含其它 Module ，以下為一個如何建立 Module 的實際範例。
+
+```
+import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super(Model, self).__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)# submodule: Conv2d
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+       x = F.relu(self.conv1(x))
+       return F.relu(self.conv2(x))
+```
 
 ## Optimizer
 {:toc}
-
+在機器學習中我們需要透過在調整參數來使 loss function 最小化， Optimizer 算是調整參數更新的策略，Pytorch 中 `torch.optim` 實作了各種優化算法，下列為如何在 PyTorch 中建立一個 Optimizer。
+```
+optimizer = torch.optim.SDG(model.parameters(), lr=0.01, momentum = 0.9)
+```
+我們使用 `Stochastic Gradient Descent (SGD)` 作為我們優化的策略並帶入學習率 為 0.01 與動量 0.9 ，在每回我們需要將輸出的數值與實際數值帶入 `loss function` 然後將 optimizer 的 gradient 歸零，接著透過 `loss.backward()` 反向傳播算出 
+ gradient 決定要走的方向，最後只需要 `optimizer.step()` 就可以透過 gradient 更新參數。
+```
+loss = loss_func(output, target)   
+optimizer.zero_grad()           
+loss.backward()                 
+optimizer.step()  
+```
 ## 參考資料
 {:toc}
 
 - [Getting Started with PyTorch Part 1: Understanding how Automatic Differentiation works](https://towardsdatascience.com/getting-started-with-pytorch-part-1-understanding-how-automatic-differentiation-works-5008282073ec)
+
+- [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)

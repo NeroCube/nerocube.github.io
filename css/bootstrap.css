@@ -2241,8 +2241,11 @@ th {
   text-align: left;
 }
 .table {
+  border-collapse: collapse;
+  word-wrap: break-word;
+  table-layout: fixed;
   width: 100%;
-  max-width: 100%;
+  min-width: 760px;
   margin-bottom: 20px;
 }
 .table > thead > tr > th,

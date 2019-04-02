@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "How to evaluate the performance of a machine learning model?"
+title:      "How to evaluate the performance of a model?"
 subtitle:   "\"The thing before deploy your model you should know.\""
 date:       2019-03-30 22:17:00
 author:     "Nero"
@@ -14,8 +14,15 @@ tags:
 ---
 > “如何評估一個機器學習模型的好壞?”
 {: .colorquote .info}
+
 ## 前情提要
 {:toc}
+
+常常在訓練模型時發現在測試資料上可以取得很高的正確率但專案一上線卻發現實際效果不如預期，而為什麼會造成這樣的現象呢？回想以前讀熟時是否常常有個情況是在家寫評量或習題都很順，但實際上真正考試卻不如預期，遭成的原因便是我們只熟記了考古題而非實際題目中的概念或者題目中多了什麼我們沒看過的變化，而機器跟我們一樣往往在測試資料上有很好的表現，只是因為熟記了測試資料中的題目而非真正我們希望機器學到的概念，在機器學習中我們將之稱為過擬合(Overfitting)，而閱讀過本篇後希望可以回答以下問題。
+
+1. **要如何驗證機器是否有學到該學的東西(Robust)?**
+2. **哪裡學的不好(Explainability)？**
+3. **該往哪裡改進且怎麼改進？**
 
 ## 模型選擇
 {:toc}
@@ -32,7 +39,7 @@ tags:
 一旦選擇了模型，就會在整個數據集上進行訓練，並在測試集上進行測試。如下圖所示：
 
 <p align="center">
-  <img width="90%" height="90%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/train-val-test-zh-tw.png">
+  <img width="80%" height="80%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/train-val-test-zh-tw.png">
 </p>
 
 ### 交叉驗證(Cross-validation)
@@ -47,7 +54,7 @@ tags:
 最常用的方法稱為 k 折疊交叉驗證，並將訓練數據分成 k 個折疊以在一個折疊上驗證模型，同時在 k-1 個其他折疊上訓練模型，所有這些 k 次。 然後將誤差在 k 倍上平均，並命名為交叉驗證錯誤。
 
 <p align="center">
-  <img width="90%" height="90%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/cross-validation-zh-tw.png">
+  <img width="80%" height="80%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/cross-validation-zh-tw.png">
 </p>
 
 ### 正則化(Regularization)
@@ -64,6 +71,58 @@ tags:
 ## 分類指標
 {:toc}
 
+在處理二元分類問題時，以下為一些常見的評估指標。
+
+### 混沌矩陣(Confusion matrix)
+{:toc}
+
+<p align="center">
+  <img width="80%" height="80%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/confusion-matrix.png">
+</p>
+
+### 主要測量指標
+{:toc}
+
+|**性能指標**|**公式**|**說明**|
+|:--:  |:--:  |:---  |
+|準確率（accuracy）|$\displaystyle\frac{\textrm{TP}+\textrm{TN}}{\textrm{TP}+\textrm{TN}+\textrm{FP}+\textrm{FN}}$|正確預測的數量除以預測總數。|
+|類別精度（precision）|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FP}}$|以 Positive 為例，表示當模型判斷一個點屬於該類的情況下，判斷結果的可信程度。|
+|類別召回率（recall）|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FN}}$|以 Positive 為例，表示模型能夠檢測到該類的比率。|
+|F1 分數 (F1 score)|$\displaystyle\frac{2 \textrm{TP}}{2 \textrm{TP}+\textrm{FP}+\textrm{FN}}$|以 Positive 為例，混合度量，對於不平衡類別非常有效。|
+
+**對於一個給定類，精度和召回率的不同組合如下：**
+
+- 高精度+高召回率：模型能夠很好地檢測該類。
+- 高精度+低召回率：模型不能很好地檢測該類，但是在它檢測到這個類時，判斷結果是高度可信的。
+- 低精度+高召回率：模型能夠很好地檢測該類，但檢測結果中也包含其他類的點。
+- 低精度+低召回率：模型不能很好地檢測該類。
+
+
+### ROC
+{:toc}
+
+受試者工作曲線，又叫做 ROC 曲線，它使用真正例率 (True Positive Rate) 作為縱軸和假正例率 (False Positive Rate ) 作為橫軸並且進過調整閾值繪製出來。下表匯總了這些度量標準：
+
+|**性能指標**|**公式**|**等價形式**|
+|:--:  |:--:  |:--  |
+|True Positive Rate <br>(TPR)|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FN}}$|Recall, sensitivity|
+|False Positive Rate <br>(FPR)|$\displaystyle\frac{\textrm{FP}}{\textrm{TN}+\textrm{FP}}$|1-specificity|
+
+<p align="center">
+  <img width="90%" height="90%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/roc-benchmark.png">
+</p>
+
+有效性不同的模型的 ROC 曲線圖示。左側模型必須犧牲很多精度才能獲得高召回率；右側模型非常有效，可以在保持高精度的同時達到高召回率。
+
+### AUC
+{:toc}
+
+AUROC（Area Under the ROC），即ROC曲線下面積。可以看出，AUROC 在最佳情況下將趨近於1.0(近於0.0也是辨識能力佳的模型，但須將曲線反向)，而在最壞情況下降趨向於0.5。同樣，一個好的 AUROC 分數意味著我們評估的模型並沒有為獲得某個類（通常是少數類）的高召回率而犧牲很多精度。
+
+<p align="center">
+  <img width="90%" height="90%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/roc-auc-zh-tw.png">
+</p>
+
 ## 回歸指標
 {:toc}
 
@@ -77,9 +136,7 @@ tags:
 
 - [Handling imbalanced datasets in machine learning](https://towardsdatascience.com/handling-imbalanced-datasets-in-machine-learning-7a0e84220f28)
 
-- [判斷模型是overfit還是underfit -- learning curve 與bias/variance tradeoff](https://blog.csdn.net/tsinghuahui/article/details/80285952)
-
-- [Machine Learning 第六周笔记一：评估学习算法和 bias-variance](https://marcovaldong.github.io/2016/04/01/Machine-Learning%E7%AC%AC%E5%85%AD%E5%91%A8%E7%AC%94%E8%AE%B0%E4%B8%80%EF%BC%9A%E8%AF%84%E4%BC%B0%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%92%8Cbias-variance/)
+- [Understanding the Bias-Variance Tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html)
 
 - [Stanford 機器學習](https://www.coursera.org/learn/machine-learning)
 

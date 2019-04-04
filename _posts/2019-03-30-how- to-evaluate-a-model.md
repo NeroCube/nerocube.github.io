@@ -126,8 +126,85 @@ AUROC（Area Under the ROC），即ROC曲線下面積。可以看出，AUROC 在
 ## 回歸指標
 {:toc}
 
+### 基本性能指標 
+{:toc}
+
+給定一個回歸模型  $f$ ，下面的度量標准通常用來評估模型的性能。
+
+|**性能指標**|**公式**|**說明**|
+|:--:  |:--:  |:--  |
+|均方根誤差(RMSE)|<img width="226" height="226" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/rmse.png">|RMSE 是衡量回歸模型錯誤率的常用公式。但是它只能在以相同單位測量誤差的模型之間進行比較。|
+|相對平方誤差(RSE)|<img width="226" height="226" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/rse.png">|與 RMSE 不同，可以在不同單位測量誤差的模型之間比較相對平方誤差(RSE)。|
+|平均絕對誤差(MAE)|<img width="226" height="226" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/mae.png">|平均絕對誤差(MAE)與原始數據具有相同的單位，並且只能在以相同單位測量誤差的模型之間進行比較。它的大小通常與RMSE相似，但略小。|
+|相對絕對誤差(RAE)|<img width="226" height="226" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/rae.png">|與 RSE 一樣，可以在不同單位測量誤差的模型之間比較相對絕對誤差(RAE)。|
+
+**a = actual target, p = predicted target**
+
+### 確定性係數 
+{:toc}
+
+確定性係數，記作 $R^2$ 或 $r^2$，提供了模型複現觀測結果的能力，如果回歸模型是“完美的”，則 SSE 為零，並且 $R^2$ 為 1。如果回歸模型是完全失敗，則 SSE 等於 SST，沒有方差被回歸解釋，並且 $R^2$ 為零。相關公式定義如下：
+
+<p align="center">
+$\boxed{R^2=\frac{\textrm{SSR}}{\textrm{SST}}=1-\frac{\textrm{SSE}}{\textrm{SST}}}$
+</p>
+
+
+|**性能指標**|**公式**|
+|:--  |:--  |
+|總平方和<br>(Sum of Squares Total)| $\displaystyle\textrm{SST}=\sum_{i=1}^m(y_i-\overline{y})^2$|
+|迴歸平方和<br>(Sum of Squares Regression)| $\displaystyle\textrm{SSR}=\sum_{i=1}^m(f(x_i)-\overline{y})^2$|
+|平方誤差和<br>(Sum of Squares Error)|$\displaystyle\textrm{SSE}=\sum_{i=1}^m(y_i-f(x_i))^2$|
+
+### 主要性能度量 
+
+以下性能度量通過考慮變量 n 的數量，常用於評估回歸模型的性能：
+
+|**Mallow's CP**|**AIC**|**BIC**|**Adjusted$R^2$**|
+|:--:|:--:|:--:|:--:|:--:|
+|$\displaystyle\frac{\textrm{SSR}+2(n+1)\widehat{\sigma}^2}{m}$|$\displaystyle2\Big[(n+2)-\log(L)\Big]$|$\displaystyle\log(m)(n+2)-2\log(L)$|$\displaystyle1-\frac{(1-R^2)(m-1)}{m-n-1}$|
+
+$L$ 代表近似，$\widehat \sigma^2$ 代表方差估計。
+
 ## 診斷與改善
 {:toc}
+
+### 偏差(Bias)
+{:toc}
+
+模型的偏差(Bias)指的是根據訓練資料學習出的模型在輸出預測結果時與真實樣本的差距。
+
+### 方差(Variance)
+{:toc}
+
+模型的方差(Variance)指的是根據訓練資料學習出的模型在輸出預測結果時的變異程度(類別數)。
+
+<p align="center">
+  <img width="75%" height="75%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/bais-variance.png">
+</p>
+
+**一個分類動物圖片的 model 來說明上圖的四種狀況，說明如下：**
+- Low Bias & Low Variance: 我們丟入一百張狗的圖片，model 預測的結果都是狗這個類別，即靶心處。
+- Low Bias & High Variance: 我們丟入一百張狗的圖片，model 預測的結果有貓有狗但結果都分佈在這兩個類別。
+- High Bias & Low Variance: 我們丟入一百張狗的圖片，model 預測的結果都是貓這個類別，即藍圈處。
+- High Bias & High Variance: 我們丟入一百張狗的圖片，model 預測的結果有貓有鳥等其他類別，但因 Bias 所以沒有我們預期的結果狗。
+
+### 偏差/方差權衡(Bias/Variance tradeoff)
+{:toc}
+
+<p align="center">
+  <img width="75%" height="75%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/model-complexity.png">
+</p>
+
+如上圖，如果我們的模型太簡單並且參數很少，那麼它可能具有 High Bias 和 Low Variance。另一方面，如果我們的模型具有大量參數，那麼它將具有 High Variance 和 Low Variance。因此，我們需要找到正確/良好的平衡，而不會過度擬合(overfitting)或欠擬合(underfitting)數據。
+
+|      |**Underfitting**|**Just right**|**Overfitting**|
+|:--|:--|:--|:--|
+|症狀|• 高訓練誤差<br>• 訓練誤差接近測試誤差<br>• 高偏差|• 訓練誤差略低於測試誤差|• 極低訓練誤差<br>• 訓練誤差遠低於測試誤差<br>• 高方差|
+|回歸圖例|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/regression-underfit.png">|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/regression-just-right.png">|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/regression-overfit.png">|
+|分類圖例|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/classification-underfit.png">|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/classification-just-right.png">|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/classification-overfit.png">|
+|深度學習圖例|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/deep-learning-underfit.png">|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/deep-learning-just-right.png">|<img width="150" height="150" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-03-30-how-to-evaluate-a-model/deep-learning-overfit.png">|
+|補救措施|• 模型複雜性<br>• 添加更多特徵<br>• 訓練更長時間||• 實施正則化<br>• 獲得更多數據|
 
 ## 參考資料
 {:toc}
@@ -141,3 +218,9 @@ AUROC（Area Under the ROC），即ROC曲線下面積。可以看出，AUROC 在
 - [Stanford 機器學習](https://www.coursera.org/learn/machine-learning)
 
 - [REGULARIZATION: An important concept in Machine Learning](https://towardsdatascience.com/regularization-an-important-concept-in-machine-learning-5891628907ea)
+
+- [Model Evaluation - Regression](https://www.saedsayad.com/model_evaluation_r.htm)
+
+- [imbalanced-learn](https://imbalanced-learn.org/en/stable/index.html)
+
+- [Understanding the Bias-Variance Tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html)

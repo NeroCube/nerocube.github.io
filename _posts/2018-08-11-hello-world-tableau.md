@@ -9,7 +9,7 @@ header-img: "img/post-bg-data visualization.jpg"
 tags:
     - 學習筆記
     - Tableau
-    - BI
+    - Data Science
     - Visualization
 ---
 

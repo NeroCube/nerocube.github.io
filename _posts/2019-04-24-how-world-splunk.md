@@ -29,6 +29,19 @@ Splunk 是及時的 machine log 分析服務，Splunk 於官方網站的定義�
 ## Splunk 的運作機制
 {:toc}
 
+<p align="center">
+  <img width="60%" height="60%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-04-24-how-world-splunk/splunk-components.png">
+</p>
+
+Splunk有3個主要組件：
+- Splunk Forwarder，用於數據轉發
+- Splunk Indexer，用於解析和索引數據
+- Search Head是一個用於搜索，分析和報告的GUI
+
+### Splunk Forwarder
+
+Splunk Forwarder 是用於收集日誌的組件。假設你要從遠端主機收集日誌，那麼你可以通過獨立於主  Splunk 實例的 Splunk Remote Forwarder 來實現這一目標。可以在多台主機上安裝多個 Forwarder，這些 Forwarder 會將日誌數據轉發到 Splunk Indexer 進行處理和存儲。如果你想對數據進行實時分析怎麼辦？Splunk Forwarder 也可用於此目的。你可以配置 Forwarder 以即時向 Splunk 索引器發送數據。可以將它們安裝在多個系統中，並即時從不同的主機同時收集數據。
+
 ## 環境安裝
 {:toc}
 

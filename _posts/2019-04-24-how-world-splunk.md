@@ -30,7 +30,7 @@ Splunk 是及時的 machine log 分析服務，Splunk 於官方網站的定義�
 {:toc}
 
 <p align="center">
-  <img width="60%" height="60%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-04-24-how-world-splunk/splunk-components.png">
+  <img width="80%" height="80%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-04-24-how-world-splunk/splunk-components.png">
 </p>
 
 Splunk有3個主要組件：
@@ -60,6 +60,16 @@ Splunk 以下方式實現快速搜索和分析：
 - 對傳入數據執行用戶定義的操作，例如標識自定義字段，屏蔽敏感數據，編寫新的或修改的密鑰，應用多行事件的中斷規則，過濾不需要的事件以及將事件路由到指定的索引或服務器
 
 Splunk Indexer 的另一個好處是數據複製。你無需擔心數據丟失，因為 Splunk 會保留索引數據的多個副本。此過程稱為索引複製或索引器群集。這是在 Indexer 集群的幫助下實現的，該集群是一組配置為複制彼此的數據的索引器。
+
+### Splunk Search Head
+
+Search Head 提供了用於執行各種操作的圖形用戶界面。可以通過輸入搜索詞來搜索和查詢存儲在索引器中的數據，可以將 Search Head 安裝在單獨的服務器上，也可以安裝在同一服務器上的其他 Splunk 組件上。 Search Head 沒有單獨的安裝檔，只需在 Splunk 服務器上啟用 splunkweb 服務即可啟用它。
+
+Splunk 實例既可以用作 Search Head ，也可僅執行搜索而不進行索引的。
+
+在 Splunk 實例中， Search Head 可以將搜索請求發送給一組 Indexer 或搜索實體，這些 Indexer 對其 Indexer 執行實際搜索。 Search Head 然後合併結果並將它們發送回用戶。這是一種更快速的搜索數據的技術，稱為分佈式搜索。
+
+Search Head 群集是協調搜索活動的 Search Head 組。群集協調 Search Head 的活動，根據當前負載分配作業，並確保所有 Search Head 都可以訪問同一組 knowledge objects。
 
 ## 環境安裝
 {:toc}
@@ -91,20 +101,18 @@ $ docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_
 
 3. 指定登入時使用的密碼 `SPLUNK_PASSWORD`，`` 替換為符合 [Splunk Enterprise 密碼](https://docs.splunk.com/Documentation/Splunk/latest/Security/Configurepasswordsinspecfile) 要求的任何字串。
 
-4. 接受許可協議`SPLUNK_START_ARGS=--accept-license`。必須在每個splunk/splunk 容器上明確接受，否則Splunk將無法啟動。
+4. 接受許可協議`SPLUNK_START_ARGS=--accept-license`。必須在每個splunk/splunk 容器上明確接受，否則Splunk 將無法啟動。
 
 容器成功啟動後會進入`healthy`狀態，可透過瀏覽器使用 `admin` 訪問 http://localhost:8000 開始使用 Splunk 。
 
 ## 適合的情境
 {:toc}
 
-## 資料匯入
-{:toc}
+- 不做修改與刪除的 Log 資料
+- 每筆記錄具有時間戳記
+- 資料的內容及格式是用戶可解析的
 
 ## 資料探索
-{:toc}
-
-## 資料視覺化
 {:toc}
 
 ## 參考資料

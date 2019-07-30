@@ -115,6 +115,25 @@ $ docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_
 ## 資料探索
 {:toc}
 
+Splunk 提供了一種名為 SPL 的搜尋語言，讓用戶方便搜索，關聯，分析和可視化任何數據。
+
+<p align="center">
+  <img width="80%" height="80%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-04-24-how-world-splunk/splunk-example.png">
+</p>
+
+如上圖 top 命令為轉換命令。會在表格中組織搜尋結果。使⽤轉換命令來產⽣可⽤來建⽴視覺化 (例如柱狀圖、折線圖、區域圖及圓餅圖) 的結果。由於轉換命令以表格格式傳回搜尋結果；因此，結果會顯⽰在 [統計資料] 索引標籤中。在這個針對成功購買的搜尋中，找到了七個不同的類別 ID。清單會根據事件中類別 ID 值的頻率，依最⾼到最低順序顯⽰類別 ID 值。
+
+## 資料視覺化
+
+<p align="center">
+  <img width="80%" height="80%" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/img/in-post/2019-04-24-how-world-splunk/splunk-example2.png">
+</p>
+
+可以在 [視覺化] 索引標籤中檢視轉換搜尋的結果，並設定圖表類型的格式。
+1. 按⼀下 [視覺化] 索引標籤。
+依預設，[視覺化] 索引標籤會以柱狀圖開啟。
+2. 按⼀下 [柱狀圖] 以開啟視覺化類型選取器。
+
 ## 參考資料
 {:toc}
 

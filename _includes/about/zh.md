@@ -11,10 +11,13 @@
 
 # 經歷
 -------------
+### 聯發科技股份有限公司 Software Engineer , Dec 2019 - Present
+- 使用技術：Splunk, AWS S3, AWS SQS, AWS IAM, AWS Cognito。
+- 和公司內部手機部門合作分析 RD 改 code 行為與剖析 Android App 探索 Insight並協助建立 KPI Dashboard 與跨 Region Data Pipeline。
 
-### 聯發科技股份有限公司 Software Engineer , Nov 2018 - Present
+### 聯發科技股份有限公司 Software Engineer , Nov 2018 - Dec 2019
 - 使用技術：Tableau, Oracle DB, Selenium, Spring MVC。
-- 和公司內部手機部門合作進行 Lower Power, Performance, DRAM 資料分析並視覺化呈現與開發 data pipeline。
+- 和公司內部手機部門合作進行 Lower Power, Performance, DRAM 資料分析並視覺化呈現與開發 Data Pipeline。
 
 ### 聯發科技股份有限公司 Software Engineer , Nov 2017 - Nov 2018  
 - 使用技術：Docker, Git, Linux Shell, Drone CI/CD, Django, AWS。

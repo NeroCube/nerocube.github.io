@@ -59,7 +59,7 @@ tags:
 | **LASSO** | **Ridge** | **Elastic Net** |
 |:---  |:---  |:---  |
 | 將係數縮小為 0 有利於變量選擇 | 使係數更小| 在變量選擇和小係數之間進行權衡 |
-|{{< myimg "300" "300" "/img/in-post/2019-03-30-how-to-evaluate-a-model/lasso.png">}}|{{< myimg "300" "300" "/img/in-post/2019-03-30-how-to-evaluate-a-model/ridge.png">}}|{{< myimg "150" "150" "/img/in-post/2019-03-30-how-to-evaluate-a-model/elastic-net.png">}}|
+|{{< myimg "300" "300" "/img/in-post/2019-03-30-how-to-evaluate-a-model/lasso.png">}}|{{< myimg "300" "300" "/img/in-post/2019-03-30-how-to-evaluate-a-model/ridge.png">}}|{{< myimg "300" "300" "/img/in-post/2019-03-30-how-to-evaluate-a-model/elastic-net.png">}}|
 | $...+\lambda\|\|\theta\|\|_1\lambda\in\mathbb{R}$|$...+\lambda\|\|\theta\|\|_2^2\lambda\in\mathbb{R}$|$...+\lambda\Big[(1-\alpha)\|\|\theta\|\|_1+\alpha\|\|\theta\|\|_2^2\Big]\lambda\in\mathbb{R},\alpha\in[0,1]$|
 
 ## 分類指標

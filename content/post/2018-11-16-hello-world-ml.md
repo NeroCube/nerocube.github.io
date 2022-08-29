@@ -4,7 +4,8 @@ title:      "Hello World Machine Learning"
 subtitle:   " \"The new stage of artificial intelligence\""
 date:       2018-11-16 22:17:00
 author:     "Nero"
-image: "img/post-bg-ml.jpg"
+image:      "img/post-bg-ml.jpg"
+URL:        "/2018/11/16/hello-world-ml/"
 tags:
     - 學習筆記
     - 機器學習

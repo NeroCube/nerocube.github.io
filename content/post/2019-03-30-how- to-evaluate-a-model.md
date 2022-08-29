@@ -5,7 +5,7 @@ subtitle:   "\"The thing before deploy your model you should know.\""
 date:       2019-03-30 22:17:00
 author:     "Nero"
 mathjax:    true
-image: "img/post-bg-ml.jpg"
+image:      "img/post-bg-ml.jpg"
 tags:
     - 學習筆記
     - 機器學習
@@ -14,7 +14,6 @@ tags:
 {{< myblockquote "colorquote info" "“如何評估一個機器學習模型的好壞?”" >}}
 
 ## 前情提要
-
 
 常常在訓練模型時發現在測試資料上可以取得很高的正確率但專案一上線卻發現實際效果不如預期，而為什麼會造成這樣的現象呢？回想以前讀熟時是否常常有個情況是在家寫評量或習題都很順，但實際上真正考試卻不如預期，遭成的原因便是我們只熟記了考古題而非實際題目中的概念或者題目中多了什麼我們沒看過的變化，而機器跟我們一樣往往在測試資料上有很好的表現，只是因為熟記了測試資料中的題目而非真正我們希望機器學到的概念，在機器學習中我們將之稱為過擬合(Overfitting)，而閱讀過本篇後希望可以回答以下問題。
 
@@ -32,7 +31,7 @@ tags:
 
 | **訓練集** | **驗證集** | **測試集** |
 |:---  |:---  |:---  |
-|模型訓練<br>一般數據集中的80% |模型評估<br>一般數據集中的20%<br>又叫保留集或開發集 |模型預測<br>未知數據 |
+|模型訓練{{< line_break >}}一般數據集中的80% |模型評估{{< line_break >}}一般數據集中的20%{{< line_break >}}又叫保留集或開發集 |模型預測{{< line_break >}}未知數據 |
 
 一旦選擇了模型，就會在整個數據集上進行訓練，並在測試集上進行測試。如下圖所示：
 
@@ -45,7 +44,7 @@ tags:
 
 | **k-fold** | **Leave-p-out** |
 |:---  |:---  |
-|在 k-1 份上訓練，並在剩於的那份上評定<br>同常 k=5 or 10|在 n-p 份資料上訓練，並在剩於的 p 份上評定<br>當 p=1 時，稱作 **leave-one-out** |
+|在 k-1 份上訓練，並在剩於的那份上評定，同常 k=5 or 10|在 n-p 份資料上訓練，並在剩於的 p 份上評定{{< line_break >}}當 p=1 時，稱作 **leave-one-out** |
 
 最常用的方法稱為 k 折疊交叉驗證，並將訓練數據分成 k 個折疊以在一個折疊上驗證模型，同時在 k-1 個其他折疊上訓練模型，所有這些 k 次。 然後將誤差在 k 倍上平均，並命名為交叉驗證錯誤。
 
@@ -95,8 +94,8 @@ tags:
 
 |**性能指標**|**公式**|**等價形式**|
 |:--:  |:--:  |:--  |
-|True Positive Rate <br>(TPR)|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FN}}$|Recall, sensitivity|
-|False Positive Rate <br>(FPR)|$\displaystyle\frac{\textrm{FP}}{\textrm{TN}+\textrm{FP}}$|1-specificity|
+|True Positive Rate \newline (TPR)|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FN}}$|Recall, sensitivity|
+|False Positive Rate \newline (FPR)|$\displaystyle\frac{\textrm{FP}}{\textrm{TN}+\textrm{FP}}$|1-specificity|
 
 ![](/img/in-post/2019-03-30-how-to-evaluate-a-model/roc-benchmark.png)
 
@@ -131,23 +130,26 @@ AUROC（Area Under the ROC），即ROC曲線下面積。可以看出，AUROC 在
 
 確定性係數，記作 $R^2$ 或 $r^2$，提供了模型複現觀測結果的能力，如果回歸模型是“完美的”，則 SSE 為零，並且 $R^2$ 為 1。如果回歸模型是完全失敗，則 SSE 等於 SST，沒有方差被回歸解釋，並且 $R^2$ 為零。相關公式定義如下：
 
+{{< rawhtml >}}
 <p align="center">
 $\boxed{R^2=\frac{\textrm{SSR}}{\textrm{SST}}=1-\frac{\textrm{SSE}}{\textrm{SST}}}$
 </p>
+{{< /rawhtml >}}
 
 
 |**性能指標**|**公式**|
 |:--  |:--  |
-|總平方和<br>(Sum of Squares Total)| $\displaystyle\textrm{SST}=\sum_{i=1}^m(y_i-\overline{y})^2$|
-|迴歸平方和<br>(Sum of Squares Regression)| $\displaystyle\textrm{SSR}=\sum_{i=1}^m(f(x_i)-\overline{y})^2$|
-|平方誤差和<br>(Sum of Squares Error)|$\displaystyle\textrm{SSE}=\sum_{i=1}^m(y_i-f(x_i))^2$|
+|總平方和{{< line_break >}}(Sum of Squares Total)| $\displaystyle\textrm{SST}=\sum_{i=1}^m(y_i-\overline{y})^2$|
+|迴歸平方和{{< line_break >}}(Sum of Squares Regression)| $\displaystyle\textrm{SSR}=\sum_{i=1}^m(f(x_i)-\overline{y})^2$|
+|平方誤差和{{< line_break >}}(Sum of Squares Error)|$\displaystyle\textrm{SSE}=\sum_{i=1}^m(y_i-f(x_i))^2$|
 
 ### 主要性能度量 
 
 以下性能度量通過考慮變量 n 的數量，常用於評估回歸模型的性能：
 
+
 |**Mallow's CP**|**AIC**|**BIC**|**Adjusted$R^2$**|
-|:--:|:--:|:--:|:--:|:--:|
+|:--:|:--:|:--:|:--:|
 |$\displaystyle\frac{\textrm{SSR}+2(n+1)\widehat{\sigma}^2}{m}$|$\displaystyle2\Big[(n+2)-\log(L)\Big]$|$\displaystyle\log(m)(n+2)-2\log(L)$|$\displaystyle1-\frac{(1-R^2)(m-1)}{m-n-1}$|
 
 $L$ 代表近似，$\widehat \sigma^2$ 代表方差估計。
@@ -180,13 +182,13 @@ $L$ 代表近似，$\widehat \sigma^2$ 代表方差估計。
 
 如上圖，如果我們的模型太簡單並且參數很少，那麼它可能具有 High Bias 和 Low Variance。另一方面，如果我們的模型具有大量參數，那麼它將具有 High Variance 和 Low Variance。因此，我們需要找到正確/良好的平衡，而不會過度擬合(overfitting)或欠擬合(underfitting)數據。
 
-|      |**Underfitting**|**Just___Right**|**Overfitting**|
+|      |**Underfitting**|**Just Right**|**Overfitting**|
 |:--|:--|:--|:--|
-|症狀|• 高訓練誤差<br>• 訓練誤差接近測試誤差<br>• 高偏差|• 訓練誤差略低於測試誤差|• 極低訓練誤差<br>• 訓練誤差遠低於測試誤差<br>• 高方差|
+|症狀|• 高訓練誤差{{< line_break >}}• 訓練誤差接近測試誤差{{< line_break >}}• 高偏差|• 訓練誤差略低於測試誤差|• 極低訓練誤差{{< line_break >}}• 訓練誤差遠低於測試誤差{{< line_break >}}• 高方差|
 |回歸圖例|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/regression-underfit.png)|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/regression-just-right.png)|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/regression-overfit.png)|
 |分類圖例|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/classification-underfit.png)|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/classification-just-right.png)|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/classification-overfit.png)|
 |深度學習圖例|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/deep-learning-underfit.png)|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/deep-learning-just-right.png)|![](/img/in-post/2019-03-30-how-to-evaluate-a-model/deep-learning-overfit.png)|
-|補救措施|• 模型複雜性<br>• 添加更多特徵<br>• 訓練更長時間||• 實施正則化<br>• 獲得更多數據|
+|補救措施|• 模型複雜性{{< line_break >}}• 添加更多特徵{{< line_break >}}• 訓練更長時間||• 實施正則化{{< line_break >}}• 獲得更多數據|
 
 ## 參考資料
 

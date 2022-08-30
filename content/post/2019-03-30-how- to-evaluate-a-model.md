@@ -4,7 +4,6 @@ title:      "How to evaluate the performance of a model?"
 subtitle:   "\"The thing before deploy your model you should know.\""
 date:       2019-03-30 22:17:00
 author:     "Nero"
-mathjax:    true
 image:      "img/post-bg-ml.jpg"
 tags:
     - 學習筆記
@@ -59,7 +58,7 @@ tags:
 |:---  |:---  |:---  |
 | 將係數縮小為 0 有利於變量選擇 | 使係數更小| 在變量選擇和小係數之間進行權衡 |
 |{{< myimg "300" "300" "/img/in-post/2019-03-30-how-to-evaluate-a-model/lasso.png">}}|{{< myimg "300" "300" "/img/in-post/2019-03-30-how-to-evaluate-a-model/ridge.png">}}|{{< myimg "300" "300" "/img/in-post/2019-03-30-how-to-evaluate-a-model/elastic-net.png">}}|
-| $...+\lambda\|\|\theta\|\|_1\lambda\in\mathbb{R}$|$...+\lambda\|\|\theta\|\|_2^2\lambda\in\mathbb{R}$|$...+\lambda\Big[(1-\alpha)\|\|\theta\|\|_1+\alpha\|\|\theta\|\|_2^2\Big]\lambda\in\mathbb{R},\alpha\in[0,1]$|
+| $\lambda\|\|\theta\|\|_1\lambda\in\mathbb{R}$|$\lambda\|\|\theta\|\|_2^2\lambda\in\mathbb{R}$|$\lambda\Big[(1-\alpha)\|\|\theta\|\|_1+\alpha\|\|\theta\|\|_2^2\Big]$ $\lambda\in\mathbb{R},\alpha\in[0,1]$|
 
 ## 分類指標
 
@@ -94,8 +93,8 @@ tags:
 
 |**性能指標**|**公式**|**等價形式**|
 |:--:  |:--:  |:--  |
-|True Positive Rate \newline (TPR)|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FN}}$|Recall, sensitivity|
-|False Positive Rate \newline (FPR)|$\displaystyle\frac{\textrm{FP}}{\textrm{TN}+\textrm{FP}}$|1-specificity|
+|True Positive Rate {{< line_break >}} (TPR)|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FN}}$|Recall, sensitivity|
+|False Positive Rate {{< line_break >}} (FPR)|$\displaystyle\frac{\textrm{FP}}{\textrm{TN}+\textrm{FP}}$|1-specificity|
 
 ![](/img/in-post/2019-03-30-how-to-evaluate-a-model/roc-benchmark.png)
 
@@ -148,7 +147,7 @@ $\boxed{R^2=\frac{\textrm{SSR}}{\textrm{SST}}=1-\frac{\textrm{SSE}}{\textrm{SST}
 以下性能度量通過考慮變量 n 的數量，常用於評估回歸模型的性能：
 
 
-|**Mallow's CP**|**AIC**|**BIC**|**Adjusted$R^2$**|
+|**Mallow's CP**|**AIC**|**BIC**|**Adjusted $R^2$**|
 |:--:|:--:|:--:|:--:|
 |$\displaystyle\frac{\textrm{SSR}+2(n+1)\widehat{\sigma}^2}{m}$|$\displaystyle2\Big[(n+2)-\log(L)\Big]$|$\displaystyle\log(m)(n+2)-2\log(L)$|$\displaystyle1-\frac{(1-R^2)(m-1)}{m-n-1}$|
 

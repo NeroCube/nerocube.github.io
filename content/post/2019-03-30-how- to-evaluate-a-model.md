@@ -72,7 +72,7 @@ tags:
 
 
 |**性能指標**|**公式**|**說明**|
-|:--:  |:--:  |:---  |
+|:--:|:--:|:--:|
 |準確率（accuracy）|$\displaystyle\frac{\textrm{TP}+\textrm{TN}}{\textrm{TP}+\textrm{TN}+\textrm{FP}+\textrm{FN}}$|正確預測的數量除以預測總數。|
 |類別精度（precision）|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FP}}$|以 Positive 為例，表示當模型判斷一個點屬於該類的情況下，判斷結果的可信程度。|
 |類別召回率（recall）|$\displaystyle\frac{\textrm{TP}}{\textrm{TP}+\textrm{FN}}$|以 Positive 為例，表示模型能夠檢測到該類的比率。|

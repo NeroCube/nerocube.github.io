@@ -81,12 +81,12 @@ Splunk 官方除了 Splunk Enterprise 還提供了 Docker 版本供下載。
 
 下載遠端 docker image 到本地端 docker engine。
 
-```
+``` bash
 $ docker pull splunk/splunk:latest
 ```
 透過下列指令啟動 Splunk Universal Forwarder。
 
-```
+```bash
 $ docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=" --name splunk splunk/splunk:latest
 ```
 

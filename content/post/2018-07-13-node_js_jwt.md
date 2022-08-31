@@ -9,6 +9,7 @@ tags:
     - Auth
     - JWT
     - 學習筆記
+description: "“簡介JSON Web Token 機制與使用情境” 1. 什麼是 JWT ? JSON Web Token (JWT) 是 Auth0 提構出的一個新 Token 想法，一個 JWT 的長相會像下面這樣。"
 ---
 
 {{< myblockquote "colorquote info" "“簡介JSON Web Token 機制與使用情境”" >}}

@@ -22,7 +22,8 @@ tags:
 - Availability Zones: 可用區（Zone）是指在同一地域內電力和網絡互相獨立的物理數據中心。目標是能夠保證可用區間故障相互隔離（大型災害或者大型電力故障除外），不出現故障擴散，使得用戶的業務持續在線服務。通過啟動獨立可用區內的實例，用戶可以保護應用程序不受單一位置故障的影響。
 每一個區域都是完全獨立的且每個可用區也是獨立的，但區域內的可用區通過低延遲鏈接相連。下圖説明區域和可用區之間的關係。
 
-![Region and Availability Zone Concepts](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/images/aws_regions.png)
+![image](https://user-images.githubusercontent.com/8331034/192158374-52cf4443-47d5-4772-b907-ba2d9d7c637f.png)
+
 
 ## 為什麼需要 Region 與 Availability Zones
 - 改善用戶端的延遲問題

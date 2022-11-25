@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "實作將 Flask 部署到 Cloud Run"
-subtitle:   "使用 GCP 全代管的無伺服器"
+title:      "Implement Flask API and Deploy to Cloud Run"
+subtitle:   "Fully managed serverless with GCP Cloud Run"
 URL: "/2022/11/24/build_flask_api_with_cloud_run/"
 date:       2022-11-24 10:00:00
 image:      "img/post-bg-os-metro.jpg"
@@ -103,7 +103,7 @@ CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
 ```
 以 Gunicorn 在 PORT 環境變量上建立 Flask 服務
 
-## 署到 Cloud Run
+## 部署 Cloud Run
 將代碼上傳到 Artifact Registry 並部署到 Cloud Run
 
 ```

@@ -19,14 +19,15 @@ description: "在 OpenAI ChatGPT Token 限制下如何進行有效的使用策�
 
 {{< myblockquote "colorquote info" "在 OpenAI ChatGPT Token 限制下如何進行有效的使用策略。" >}}
 ## Background
-<img width="1668" alt="image" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224697306-0f1ddd9f-0628-46d4-93a2-63b889ee3c4b.png">
+
+![image](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224697306-0f1ddd9f-0628-46d4-93a2-63b889ee3c4b.png)
 
 在使用 OpenAI ChatGPT 時，我們會發現 ChatGPT 是有 Token Limits 的限制。這意味著每次我們只有一定數量的 Token 可以使用，而 Token 的數量越多，可以使用的模型功能也越強大。因此，如何解決 Token Limits 的問題，成為了我們所關心的問題。在本篇文章中，我們將會介紹如何繞過 Token Limits 的限制。
 
 ## Tokens Limits
 下列是目前各模型的 Max Request Tokens，詳細說明可以參考 [GPT-3 Documentation](https://platform.openai.com/docs/models/gpt-3)。
 
-<img width="800" alt="image" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224700855-5d92d2b4-d2c8-49fe-935f-af3dee1e28b5.png">
+![image](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224700855-5d92d2b4-d2c8-49fe-935f-af3dee1e28b5.png)
 
 ## Solution
 OpenAI Research 中提供了一個很好的解決方案，即使用[人類反饋進行書籍摘要](https://openai.com/research/summarizing-books)這篇所用的方法，實作步驟如下。
@@ -84,7 +85,7 @@ filename = "/Users/nero/Desktop/Github/jupyter/Brent_oil_price_forecast_for_2023
 num_tokens = count_tokens(filename, model_name)
 print("Number of tokens:  ", num_tokens)
 ```
-<img width="771" alt="image" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224747709-e2b8e2f2-effa-48c2-a38a-25b12974ba73.png">
+![image](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224747709-e2b8e2f2-effa-48c2-a38a-25b12974ba73.png)
 
 接下來將文本分解為 1,000 個標記和重疊的 100 個標記的塊，以確保不會因分解文本而丟失任何信息。 
 ``` python
@@ -153,7 +154,7 @@ article_summary = response["choices"][0]["text"].strip()
 print(article_summary) 
 ```
 透過這樣的方式我們可以在不踩到 Max Request Tokens 的限制，得到我們預期的結果。
-<img width="998" alt="image" src="https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224751590-48fd2051-b307-46c0-aad2-60e2768f0037.png">
+![image](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224751590-48fd2051-b307-46c0-aad2-60e2768f0037.png)
 
 ## Reference
 - [OpenAI Documentation](https://platform.openai.com/docs/introduction/overview)

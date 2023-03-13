@@ -22,7 +22,7 @@ description: "在 OpenAI ChatGPT Token 限制下如何進行有效的使用策�
 
 ![image](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224697306-0f1ddd9f-0628-46d4-93a2-63b889ee3c4b.png)
 
-在使用 OpenAI ChatGPT 時，我們會發現 ChatGPT 是有 Token Limits 的限制。這意味著每次我們只有一定數量的 Token 可以使用，而 Token 的數量越多，可以使用的模型功能也越強大。因此，如何解決 Token Limits 的問題，成為了我們所關心的問題。在本篇文章中，我們將會介紹如何繞過 Token Limits 的限制。
+在使用 OpenAI ChatGPT 時，我們會發現 ChatGPT 是有 Token Limits 的限制。這意味著每次我們只有一定數量的 Token 可以使用，而 Token 的數量越多，可以使用的模型能力也越強大。因此，如何解決 Token Limits 的問題，成為了我們所關心的問題。在本篇文章中，我們將會介紹如何繞過 Token Limits 的限制。
 
 ## Tokens Limits
 下列是目前各模型的 Max Request Tokens，詳細說明可以參考 [GPT-3 Documentation](https://platform.openai.com/docs/models/gpt-3)。
@@ -35,8 +35,9 @@ OpenAI Research 中提供了一個很好的解決方案，即使用[人類反饋
 1. 將原始文本分為不同的部分，每個部分進行摘要。
 1. 將各部分的摘要再次進行摘要，形成更高層次的摘要。
 1. 摘要過程一直持續，直到得到完整的摘要。
+1. 針對最後摘要進行我們期望的查詢或分析。
 
-而如何拆分文本 Tokens 有很多 Python 的 NLP 包可以計算 NLP Token。以下是一些常用的 Python NLP 包：
+而如何拆分文本 Tokens 有很多 Python 的 NLP 包可以幫助我們計算 NLP Token。以下是一些常用的 Python NLP 包：
 
 - NLTK（Natural Language Toolkit）： NLTK 是一個用於自然語言處理的 Python 包，提供了大量的功能，包括斷詞、標記、命名實體識別、詞幹提取、詞形轉換等。
 
@@ -54,11 +55,11 @@ OpenAI Research 中提供了一個很好的解決方案，即使用[人類反饋
 
 - Tiktoken:Tiktoken 是 OpenAI 本身開發的一種用於模型的快速 [BPE](https://en.wikipedia.org/wiki/Byte_pair_encoding) 標記器。
 
-使用計算 [NLTK](https://www.nltk.org/) 的 Tokens 數與 [OpenAI 分詞器](https://platform.openai.com/tokenizer) 不一致，但差異很小。[Transformers](https://huggingface.co/docs/transformers/index) 的 Tokens 計數與 OpenAI Tokens 分詞器是一致的。但處理速度慢 3-6 倍 [Tiktoken](https://github.com/openai/tiktoken) 
+實驗後發現使用 [NLTK](https://www.nltk.org/) 計算的 Tokens 數與 [OpenAI 分詞器](https://platform.openai.com/tokenizer) 不一致，但差異很小。[Transformers](https://huggingface.co/docs/transformers/index) 的 Tokens 計數與 OpenAI Tokens 分詞器是一致的。但處理速度慢 [Tiktoken](https://github.com/openai/tiktoken) 3-6 倍
 
 ![image](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224729070-ff1af7e4-2561-495f-bf5a-5d343c1e906d.png)
 
-以 GPT-2 的分詞器，使用 `tokenizers==0.13.2`、`transformers==4.24.0` 和 `tiktoken==0.2.0`，在 1GB 的文本上進行的效能測試，基於效能與正確性選擇以下範例選擇 Tiktoken 作為 。
+以 GPT-2 的分詞器，使用 `tokenizers==0.13.2`、`transformers==4.24.0` 和 `tiktoken==0.2.0`，在 1GB 的文本上進行的效能測試，結果如上圖，基於效能與正確性，以下選擇 Tiktoken 作為範例。
 
 ### Install Packages
 ```
@@ -153,7 +154,7 @@ response = openai.Completion.create(
 article_summary = response["choices"][0]["text"].strip()
 print(article_summary) 
 ```
-透過這樣的方式我們可以在不踩到 Max Request Tokens 的限制，得到最後 Summary 的結果，我們可以在進行 Query ，像是這篇新聞的市場情緒是正向還是反向。
+透過這樣的方式我們可以在不踩到 Max Request Tokens 的限制，得到最後摘要的結果，針對最後結果我們可以再進行所期望的查詢或分析，像是這篇新聞的市場情緒是正向還是反向的。
 ![image](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224751590-48fd2051-b307-46c0-aad2-60e2768f0037.png)
 
 ## Reference

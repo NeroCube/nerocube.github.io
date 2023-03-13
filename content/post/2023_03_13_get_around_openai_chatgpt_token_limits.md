@@ -31,7 +31,7 @@ description: "在 OpenAI ChatGPT Token 限制下如何進行有效的使用策�
 
 ## Solution
 OpenAI Research 中提供了一個很好的解決方案，即使用[人類反饋進行書籍摘要](https://openai.com/research/summarizing-books)這篇所用的方法，實作步驟如下。
-
+![image](https://user-images.githubusercontent.com/8331034/224775317-2662f2d1-a373-4570-97d6-dda4c87a3e32.png)
 1. 將原始文本分為不同的部分，每個部分進行摘要。
 1. 將各部分的摘要再次進行摘要，形成更高層次的摘要。
 1. 摘要過程一直持續，直到得到完整的摘要。
@@ -153,7 +153,7 @@ response = openai.Completion.create(
 article_summary = response["choices"][0]["text"].strip()
 print(article_summary) 
 ```
-透過這樣的方式我們可以在不踩到 Max Request Tokens 的限制，得到我們預期的結果。
+透過這樣的方式我們可以在不踩到 Max Request Tokens 的限制，得到最後 Summary 的結果，我們可以在進行 Query ，像是這篇新聞的市場情緒是正向還是反向。
 ![image](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2023_03_13_get_around_openai_chatgpt_token_limits/224751590-48fd2051-b307-46c0-aad2-60e2768f0037.png)
 
 ## Reference

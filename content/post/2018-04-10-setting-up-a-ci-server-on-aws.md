@@ -110,7 +110,7 @@ services:
       - DRONE_SERVER=drone-server:9000
       - DRONE_SECRET=[MUST_BE_SAME_AS_IN_SERVER]
 ```
-這邊可以透過 `openssl rand -base64 32`生成 DRONE_SECRET ，並填入 Github 取得的`DRONE_GITHUB_CLIENT`與`DRONE_GITHUB_SECRET`，然後`:wq`寫入。
+這邊可以透過 `openssl rand -base64 32` 生成 DRONE_SECRET ，並填入 Github 取得的 `DRONE_GITHUB_CLIENT` 與 `DRONE_GITHUB_SECRET` ，然後 `:wq` 寫入。
 
 ## 啟動 Drone Server
 執行以下指令，啟動 docker-compose

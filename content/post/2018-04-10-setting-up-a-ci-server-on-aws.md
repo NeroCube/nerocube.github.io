@@ -53,15 +53,15 @@ pipeline:
 
 ## 註冊 Github application
 1. 透過個人設定點選 Settings —> Developer settings —> OAuth Apps —> Register
-2. Homepage URL 輸入 AWS Public DNS (IPv4) 並加上 **[drone-port]**，範例這邊開的是 8000 port
+2. Homepage URL 輸入 AWS Public DNS (IPv4) 並加上 `drone-port`，範例這邊開的是 8000 port
 
 ```bash
-http://[public-ip-of-ec2-instance]:[drone-port]
+http://public-ip-of-ec2-instance:drone-port
 ```
-4. Authorization callback UR 輸入AWS Public DNS (IPv4) 並加上**[drone-port]/authorize**，範例這邊開的是 8000 port
+4. Authorization callback UR 輸入AWS Public DNS (IPv4) 並加上 `drone-port/authorize` ，範例這邊開的是 8000 port
 
 ```bash
-http://[public-ip-of-ec2-instance]:[drone-port]/authorize
+http://public-ip-of-ec2-instance:drone-port/authorize
 ```
 
 ![](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2018-04-10-setting-up-a-ci-server-on-aws/Screen%20Shot%202018-04-12%20at%2010.51.56%20PM.png)
@@ -117,7 +117,7 @@ services:
 ```bash
 $ docker-compose up
 ```
-接著就可以透過瀏覽器輸入[http://[public-ip-of-ec2-instance]:8000](http://[public-ip-of-ec2-instance]:8000) ，便可以在瀏覽器上看到你的 CI 服務了。
+接著就可以透過瀏覽器輸入 [http://public-ip-of-ec2-instance:8000]() ，便可以在瀏覽器上看到你的 CI 服務了。
 
 ![Testing on Drone](https://raw.githubusercontent.com/NeroCube/nerocube.github.io/master/static/img/in-post/2018-04-10-setting-up-a-ci-server-on-aws/Screen%20Shot%202018-04-12%20at%2010.52.56%20PM.png)
 每次 commit 到 Github 上 CI Server 便會自動化做測試。
